@@ -6,7 +6,7 @@
     name: 'zabbix'
     auto_import_keys: yes
 - name: Install agent
-  community.general.zypper:
+  zypper:
     name: zabbix-agent
     state: installed
 - name: Copy Zabbix Configuration
