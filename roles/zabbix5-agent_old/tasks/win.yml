@@ -1,0 +1,24 @@
+---
+# Windows Task
+- name: Check Old Zabbix Installation
+  win_stat:
+    path: C:\ZABBIX_AGENT\zabbix_agentd.conf
+  register: oldzabbix
+- name: Uninstall Zabbix
+  ansible.windows.win_command: c:\ZABBIX_AGENT\zabbix_agentd.exe --uninstall    
+  when: oldzabbix is true
+- name: Install agent
+  ansible.windows.win_package:
+    path: https://cdn.zabbix.com/zabbix/binaries/stable/5.0/5.0.8/zabbix_agent-5.0.8-windows-amd64-openssl.msi
+    product_id: 82C024F6-6932-4226-90A9-A916E2A24293
+    state: present
+    arguments: ENABLEREMOTECOMMANDS=1 SERVER=192.168.8.0/22 LISTENPORT=10050 SERVERACTIVE=zabbix5.zegna.com:10051 HOSTNAME={{inventory_hostname_short}}
+    log_path: C:\temp\msi.log
+- name: Copy Zabbix Configuration
+  ansible.windows.win_copy:
+    src: templates/zabbix_agentd_win.j2
+    dest: C:\Program Files\Zabbix Agent\zabbix_agentd.conf
+- name: Enable Zabbix Agent
+  ansible.windows.win_service:
+    name: Zabbix Agent
+    state: restarted
