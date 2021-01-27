@@ -1,0 +1,7 @@
+---
+- name: Ping
+  hosts: WIN
+#  become: true
+
+  roles:
+    - zabbix5-agent
