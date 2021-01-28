@@ -5,8 +5,8 @@
     path: C:\ZABBIX_AGENT\zabbix_agentd.conf
   register: oldzabbix
 - name: Uninstall Zabbix
-  ansible.windows.win_shell: "c:\ZABBIX_AGENT\zabbix_agentd.exe --uninstall"
-  when: oldzabbix is true
+  ansible.windows.win_shell: c:\ZABBIX_AGENT\zabbix_agentd.exe --uninstall
+  when: oldzabbix.exists is True
 - name: Install agent
   ansible.windows.win_package:
     path: https://cdn.zabbix.com/zabbix/binaries/stable/5.0/5.0.8/zabbix_agent-5.0.8-windows-amd64-openssl.msi
