@@ -1,6 +1,6 @@
 ---
 - name: Ping
-  hosts: WIN
+  hosts: all
 #  become: true
 
   roles:
