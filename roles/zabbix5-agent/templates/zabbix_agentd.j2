@@ -335,7 +335,7 @@ Include=/etc/zabbix/zabbix_agentd.d/*.conf
 # Default:
 # UserParameter=
 UserParameter=release,uname -a
-UserParameter=hostname,echo $HOSTNAME.zegna.com
+UserParameter=hostname,echo $HOSTNAME | awk -F. '{ print $1 }'
 ####### LOADABLE MODULES #######
 
 ### Option: LoadModulePath
