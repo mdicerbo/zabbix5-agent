@@ -174,7 +174,7 @@ ServerActive=zabbix5.zegna.com:10051
 # Mandatory: no
 # Default:
 #HostnameItem=hostname
-
+HostnameItem=system.run[hostname | awk -F. '{ print $1 }' ]
 ### Option: HostMetadata
 #	Optional parameter that defines host metadata.
 #	Host metadata is used at host auto-registration process.
