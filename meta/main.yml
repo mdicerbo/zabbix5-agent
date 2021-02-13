@@ -37,7 +37,7 @@ galaxy_info:
   - name: opensuse
     versions:
   #  - all
-    - 15
+    - 15.1
   #   - 7
   #   - 99.99
   - name: centos
