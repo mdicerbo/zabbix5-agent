@@ -5,9 +5,9 @@ Zabbix 5 Agent Ansible roles
 
 Supported OS:
 
-RHEL 6/7/8
-Oracle Linux 6/7/8
-Centos 6/7/8/Stream
+- RHEL 6/7/8 <br>
+- Oracle Linux 6/7/8
+- Centos 6/7/8/Stream
 
 SUSE 15
 
