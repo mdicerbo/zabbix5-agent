@@ -1,0 +1,23 @@
+---
+# tasks file for zabbix5-agent
+- name: Add repository
+  zypper_repository:
+    repo: 'http://repo.zabbix.com/zabbix/5.0/sles/{{ ansible_distribution_major_version }}//x86_64/'
+    name: 'zabbix'
+    auto_import_keys: yes
+- name: Install agent
+  zypper:
+    name: zabbix-agent
+    state: installed
+- name: Copy Zabbix Configuration
+  template:
+     src: templates/zabbix_agentd.j2
+     dest: /etc/zabbix/zabbix_agentd.conf
+     owner: root
+     group: root
+     mode: 0644
+- name: Enable Zabbix Agent
+  systemd:
+    name: zabbix-agent  
+    state: restarted
+    enabled: yes
