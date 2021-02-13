@@ -8,8 +8,7 @@ Supported OS:
 - RHEL 6/7/8 <br>
 - Oracle Linux 6/7/8
 - Centos 6/7/8/Stream
-
-SUSE 15
+- SUSE 15
 
 Example Playbook
 ----------------
