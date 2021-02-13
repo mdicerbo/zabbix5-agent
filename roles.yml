@@ -1,7 +1,0 @@
----
-- name: Ping
-  hosts: all
-#  become: true
-
-  roles:
-    - zabbix5-agent
